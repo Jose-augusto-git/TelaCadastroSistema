@@ -1,0 +1,90 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8257E5">
+    <title> NewLife | Adicionar Medicamentos</title>
+    <link rel="icon" href="imagem/prescricao-medica.svg" />
+    <link rel="shoutcut icon" href="images/favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="css/telaCadastro.css">
+    <link rel="stylesheet" href="css/partials/cadastro.css">
+    <link rel="stylesheet" href="css/partials/header.css">
+    <link rel="stylesheet" href="css/partials/forms.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+</head>
+
+<body id="cadastro">
+    <div id="container">
+        <header class="page-header">               
+            <div class="header-content">
+                
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
+
+        </header>
+        <!-- Vertical navbar -->
+        <?php require_once'navBar.php';?>
+        <main>
+            <form class="form" action="bd-medicamento.php" method="POST" id="create-class">
+                <fieldset>
+                    <legend class="text-center "> Cadastro de Medicamento <img  style="width: 10rem;" src='imagem/remedios.svg' alt='remedios'> </legend>
+                    <!--todo fieldset precisa de um ledend e o legend e uma agrupamento de dados-->
+                    <div class="input-block">
+                        <label for="medicamentos"> Medicamento </label>
+                        <input name="medicamentos" id="medicamentos" required>
+                    </div>
+
+                    <div class="select-block">
+
+                    <div class="input-block">
+                    <label for="abreviacao"> Abreviação </label>
+                    <input name="abreviacao" id="abreviacao" required>
+                    </div>
+                    <div class="input-block">
+                    <label for="latim"> Latim </label>
+                    <input name="latim" id="latim" required>
+                    </div>
+ 
+                        <div class="input-block">
+                            <label for="fonte"> Fonte </label>
+                            <input name="fonte" id="fonte" required>
+                        </div>
+
+
+                        <div class="textarea-block">
+                            <label for="principal"> Principais </label>
+                            <textarea name="principal" id="principal" required></textarea>
+                        </div>
+
+                </fieldset>
+
+            </form>
+            <footer>
+                <p>
+                   
+                    <img src='imagem/atencao.svg' alt='Aviso importante' width='60px'>    
+
+                    Importante! <br>
+                    Preencha todos os dados
+                </p>
+                <button type="submit" form="create-class" value="cadastro">Salvar</button><!-- form="create-class" envia o formulario sem precisar estar dento da tag form-->
+            </footer>
+        </main>
+    </div>
+
+</body>
+
+</html>
